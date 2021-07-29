@@ -26,7 +26,7 @@ cd ..
 # polybench
 cd polybench
 mkdir 2DC
-mkdir axat
+mkdir atax
 mkdir mvt
 cd ..
 #
@@ -55,7 +55,7 @@ mkdir lud
 mkdir myocyte
 mkdir nn
 mkdir nw
-mkdir particlefiliter
+mkdir particlefilter
 mkdir pathfinder
 mkdir srad
 mkdir streamcluster
