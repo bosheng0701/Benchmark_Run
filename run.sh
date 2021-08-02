@@ -1,3 +1,82 @@
+ ###------------------------------ Ispass2009 begin ---------------------------------
+
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/ispass/bfs
+ SECONDS=0
+ echo  "BFS run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/ispass-2009-BFS /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/ispass-2009/ispass-2009-BFS/data/graph65536.txt >bfs_65536_ispass.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+ ###------------------------------ Ispass2009 3.1 End ------------------------------------------------------
+ 
+ ###------------------------------ pannotia begin ---------------------------------
+
+ ###------------------------------ pannotia End ------------------------------------------------------
+
+ ###------------------------------ parboil begin ---------------------------------
+
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/parboil/lbm
+ SECONDS=0
+ echo  "lbm run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/parboil-lbm /root/gpgpu-sim_simulations/benchmarks/src/cuda/parboil/datasets/lbm/short/input/120_120_150_ldc.of -- 100
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/parboil/parboil-spmv
+ SECONDS=0
+ echo  "parboil-spmv run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/parboil-spmv -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/parboil/parboil-spmv/data/small/input/1138_bus.mtx,/root/gpgpu-sim_simulations/benchmarks/data_dirs/parboil/parboil-spmv/data/small/input/vector.bin >spmv.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+
+ ###------------------------------ parboil End ------------------------------------------------------
+
+ ###------------------------------ polybench begin ---------------------------------
+ 
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/polybench/2DC
+ SECONDS=0
+ echo  "2DC run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/polybench-2DConvolution > 2DC.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/polybench/atax
+ SECONDS=0
+ echo  "atax run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/polybench-atax > atax.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/polybench/mvt
+ SECONDS=0
+ echo  "mvt run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/polybench-mvt > mvt.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ 
+ ###------------------------------ polybench End ------------------------------------------------------
+ 
+ ###------------------------------ Rodinia 3.1 begin --------------------------------------------------
  
  cd /root/gpgpu-sim_distribution
  source setup_environment 
@@ -32,15 +111,15 @@
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
 
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/cfd
-#  SECONDS=0
-#  echo  "cfd run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/cfd-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/cfd-rodinia-3.1/data/missile.domn.0.2M >cfd_baseline_0.2M.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/cfd
+ SECONDS=0
+ echo  "cfd run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/cfd-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/cfd-rodinia-3.1/data/missile.domn.0.2M >cfd_baseline_0.2M.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
  cd /root/gpgpu-sim_distribution
@@ -65,81 +144,81 @@
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/heartwall
-#  SECONDS=0
-#  echo  "heartwall run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/heartwall-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/heartwall-rodinia-3.1/data/test.avi 20 > heartwall_baseline_20.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/heartwall
+ SECONDS=0
+ echo  "heartwall run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/heartwall-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/heartwall-rodinia-3.1/data/test.avi 20 > heartwall_baseline_20.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/hotspot
-#  SECONDS=0
-#  echo  "hotspot run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/hotspot-rodinia-3.1 512 2 2 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/hotspot-rodinia-3.1/data/temp_512 output.out > hotspot_baseline_512.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/hotspot
+ SECONDS=0
+ echo  "hotspot run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/hotspot-rodinia-3.1 512 2 2 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/hotspot-rodinia-3.1/data/temp_512 output.out > hotspot_baseline_512.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/hotspot3D
-#  SECONDS=0
-#  echo  "hotspot3D run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/hotspot3D-rodinia-3.1 512 8 100 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/hotspot3D-rodinia-3.1/data/power_512x8 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/hotspot3D-rodinia-3.1/data/temp_512x8 output.out >hotspot3D_baseline_512x8.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/hotspot3D
+ SECONDS=0
+ echo  "hotspot3D run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/hotspot3D-rodinia-3.1 512 8 100 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/hotspot3D-rodinia-3.1/data/power_512x8 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/hotspot3D-rodinia-3.1/data/temp_512x8 output.out >hotspot3D_baseline_512x8.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/hybridsort
-#  SECONDS=0
-#  echo  "hybridsort run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/hybridsort-rodinia-3.1 r > hybridsort_baseline.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/hybridsort
+ SECONDS=0
+ echo  "hybridsort run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/hybridsort-rodinia-3.1 r > hybridsort_baseline.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/kmeans
-#  SECONDS=0
-#  echo  "kmeans run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/kmeans-rodinia-3.1 -o -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/kmeans-rodinia-3.1/data/128k.txt >kmeans_baseline_128k.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/kmeans
+ SECONDS=0
+ echo  "kmeans run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/kmeans-rodinia-3.1 -o -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/kmeans-rodinia-3.1/data/128k.txt >kmeans_baseline_128k.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/lavaMD
-#  SECONDS=0
-#  echo  "lavaMD run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/lavaMD-rodinia-3.1 -boxes1d 10 > lavaMD_baseline.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/lavaMD
+ SECONDS=0
+ echo  "lavaMD run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/lavaMD-rodinia-3.1 -boxes1d 10 > lavaMD_baseline.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/leukocyte
-#  SECONDS=0 
-#  echo  "leukocyte run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/leukocyte-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/leukocyte-rodinia-3.1/data/testfile.avi 5 >leukocyte_baseline_5.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt 
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/leukocyte
+ SECONDS=0 
+ echo  "leukocyte run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/leukocyte-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/leukocyte-rodinia-3.1/data/testfile.avi 5 >leukocyte_baseline_5.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt 
  
  
  cd /root/gpgpu-sim_distribution
@@ -152,12 +231,6 @@
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
-# #  echo  "mummergpu run" |tee -a time.txt
-# #  cd /root/gpgpu-sim_distribution
-# #  source setup_environment 
-# #  make
-# #  cd /root/benchmark_run/rodinia/3.1/cuda/mummergpu
-# #  timeout 2h
 
  
  cd /root/gpgpu-sim_distribution
@@ -171,15 +244,15 @@
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/nn
-#  SECONDS=0
-#  echo  "nn run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/nn-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/nn-rodinia-3.1/data/filelist_4 -r 5 -lat 30 -lng 90 > nn_baseline_filelist_4.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/nn
+ SECONDS=0
+ echo  "nn run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/nn-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/nn-rodinia-3.1/data/filelist_4 -r 5 -lat 30 -lng 90 > nn_baseline_filelist_4.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
  cd /root/gpgpu-sim_distribution
@@ -204,34 +277,50 @@
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/pathfinder
-#  SECONDS=0
-#  echo  "pathfinder run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/pathfinder-rodinia-3.1 100000 100 20 > result.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/pathfinder
+ SECONDS=0
+ echo  "pathfinder run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/pathfinder-rodinia-3.1 100000 100 20 > result.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/srad 
-#  SECONDS=0
-#  echo  "srad_v2 run" |tee -a time.txt
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/srad_v2-rodinia-3.1 2048 2048 0 127 0 127 0.5 2 >srad_v2_baseline_2048.txt 
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/srad 
+ SECONDS=0
+ echo  "srad_v2 run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/srad_v2-rodinia-3.1 128 128 0 31 0 31 0.5 2 >srad_v2_baseline_2048.txt 
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/streamcluster
-#  SECONDS=0
-#  echo  "streamcluster run" |tee -a time.txt  
-#  timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/streamcluster-rodinia-3.1 10 20 256 65536 65536 1000 none output.txt 1 >streamcluster_baseline_65536.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt 
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/streamcluster
+ SECONDS=0
+ echo  "streamcluster run" |tee -a time.txt  
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/streamcluster-rodinia-3.1 10 20 256 65536 65536 1000 none output.txt 1 >streamcluster_baseline_65536.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt 
+
+###--------------------------------- Rodinia 3.1 End------------------------------------------------------
+
+###--------------------------------- SDK Begin -----------------------------------------------------------
+
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/sdk/dct
+ SECONDS=0
+ echo  "dct run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/dct8x8 >dct.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+###--------------------------------- SDK End -----------------------------------------------------------
