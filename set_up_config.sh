@@ -3,6 +3,10 @@
  #ispass
  cd /root/benchmark_run/ispass/bfs
  cp -a /root/benchmark_run/GTX480/* ./
+ cd /root/benchmark_run/ispass/wp
+ cp -a /root/benchmark_run/GTX480/* ./
+ cd /root/benchmark_run/ispass/wp/data
+ cp -a /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/ispass-2009/ispass-2009-WP/data/* ./
 
  # parboil
  cd /root/benchmark_run/parboil/parboil-spmv
@@ -88,3 +92,6 @@
  # sdk
  cd /root/benchmark_run/sdk/dct
  cp -a /root/benchmark_run/GTX480/* ./
+ mkdir data
+ cd data 
+ cp -a /root/gpgpu-sim_simulations/benchmarks/src/cuda/sdk/4.2/dct8x8/doc/* ./

@@ -9,6 +9,10 @@ mkdir sdk
 # ispass
 cd ispass 
 mkdir bfs
+mkdir wp
+cd wp
+mkdir data
+cd ..
 cd ..
 #
 
