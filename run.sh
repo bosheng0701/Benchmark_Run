@@ -124,12 +124,12 @@
  cd /root/gpgpu-sim_distribution
  source setup_environment 
  make
- cd /root/benchmark_run/rodinia/3.1/cuda/streamcluster
+ cd /root/benchmark_run/rodinia/3.1/cuda/cfd
  SECONDS=0
- echo  "streamcluster run" |tee -a time.txt  
- timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/streamcluster-rodinia-3.1 10 20 256 65536 65536 1000 none output.txt 1 >streamcluster_baseline_65536.txt
+ echo  "cfd run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/cfd-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/cfd-rodinia-3.1/data/missile.domn.0.2M >cfd_baseline_0.2M.txt
  duration=$SECONDS
- echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt 
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
  
  cd /root/gpgpu-sim_distribution
