@@ -77,6 +77,9 @@
  cd /root/benchmark_run/rodinia/3.1/cuda/nw
  cp -a /root/benchmark_run/$1/* ./
 
+ cd /root/benchmark_run/rodinia/3.1/cuda/mummergpu
+ cp -a /root/benchmark_run/$1/* ./
+
  cd /root/benchmark_run/rodinia/3.1/cuda/particlefilter
  cp -a /root/benchmark_run/$1/* ./
 

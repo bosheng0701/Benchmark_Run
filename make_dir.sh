@@ -60,6 +60,7 @@ mkdir lud
 mkdir myocyte
 mkdir nn
 mkdir nw
+mkdir mummergpu
 mkdir particlefilter
 mkdir pathfinder
 mkdir srad
