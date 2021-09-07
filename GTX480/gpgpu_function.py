@@ -105,3 +105,37 @@ def function_unit_time_transform(total_cycle): #統計load store unit busy time
         ffp.write(str(shader_max[i])+'\n')
     ffp.close()
     #---------------------------------------------------------------------------------
+
+def long_latency_calculate():
+    latencyl1l2=open("latencyL1L2.txt","r")
+    L1cache_list=[]
+    L2cache_list=[]
+    l1latency=[]
+    l2latency=[]
+    pc_value=[]
+    latency=open("./result/latency.txt","w")
+    for i in latencyl1l2:
+        j=i.strip().split(',')
+        if i[0]=="1":
+            L1cache_list.append(j[1])
+            l1latency.append(int(j[4]))
+        elif i[0]=="2":
+            L2cache_list.append(j[1])
+            l2latency.append(int(j[4]))
+        if j[1] not in pc_value:
+                pc_value.append(j[1])
+    latency.write("L1_cache_access: "+str(len(L1cache_list))+"\nL2_cache_access: "+str(len(L2cache_list)))# l1 l2 total cache access
+    latency.write("\nL1_total_pc:\n")
+    for i in pc_value:
+        latency.write(str(i)+":"+str(L1cache_list.count(i))+"  ")
+    latency.write("\n")
+    latency.write("L2_total_pc:\n")
+    for i in pc_value:
+        latency.write(str(i)+":"+str(L2cache_list.count(i))+"  ")
+    latency.write("\n")
+    latency.write("l2_latency_mean: "+str(round(np.mean(l2latency),2)))
+    latency.write("\nl2_latency_percentile:\n")
+    for i in range(10,110,10):
+        latency.write(str(i)+":"+str(round(np.percentile(l2latency,i),0))+"  ")
+
+        
