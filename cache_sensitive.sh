@@ -9,16 +9,6 @@
 #  duration=$SECONDS
 #  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/kmeans
-#  SECONDS=0
-#  echo  "kmeans run" |tee -a time.txt
-#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/kmeans-rodinia-3.1 -o -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/kmeans-rodinia-3.1/data/128k.txt >kmeans_128k.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
-
 
  cd /root/gpgpu-sim_distribution
  source setup_environment 
@@ -37,7 +27,7 @@
  cd /root/benchmark_run/ispass/bfs
  SECONDS=0
  echo  "BFS run" |tee -a time.txt
- /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/ispass-2009-BFS /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/ispass-2009/ispass-2009-BFS/data/graph65536.txt >bfs_65536_ispass.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/ispass-2009-BFS /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/ispass-2009/ispass-2009-BFS/data/graph65536.txt >BFS65536.txt
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
@@ -51,15 +41,6 @@
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/rodinia/3.1/cuda/streamcluster
-#  SECONDS=0
-#  echo  "streamcluster run" |tee -a time.txt  
-#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/streamcluster-rodinia-3.1 10 20 256 65536 65536 1000 none output.txt 1 >streamcluster_baseline_65536.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt 
 
  cd /root/gpgpu-sim_distribution
  source setup_environment 
@@ -71,4 +52,13 @@
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
- 
+
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/kmeans
+ SECONDS=0
+ echo  "kmeans run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/kmeans-rodinia-3.1 -o -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/kmeans-rodinia-3.1/data/128k.txt >kmeans_128k.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt

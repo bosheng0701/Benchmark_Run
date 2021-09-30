@@ -16,4 +16,5 @@ except:
     print("continue")
 ft.function_cta_retire_time_transform()
 ft.function_unit_time_transform(total_cycle)
+ft.ALU_time_transform(total_cycle)
 ft.long_latency_calculate()

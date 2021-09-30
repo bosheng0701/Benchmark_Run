@@ -1,4 +1,6 @@
 import numpy as np
+import pandas as pd
+import os
 
 def convert_cta_total():  #統計各個shader的cta數量 
     f=open('total_cta.txt','r')
@@ -74,68 +76,85 @@ def function_unit_time_transform(total_cycle): #統計load store unit busy time
     f.close()
     #----------------------------------------------------------
     # 輸出平均及各個百分位項的時間
-    fp=open('./result/total_rate_FU.txt','w')
-    fu_percent=[]
+    fp=open('./result/total_rate_lsu.txt','w')
+    alu_percent=[]
     for i in range(15):
-        fu_percent.append([])
+        alu_percent.append([])
     shader_total_rate=np.zeros((15),dtype=np.float32)
     for i in lsu_busy_time:
         shader_total_rate[int(i[0])]=int(i[4])/total_cycle
-        fu_percent[int(i[0])].append(int(i[3]))
+        alu_percent[int(i[0])].append(int(i[3]))
     fp.write('sid  busy_rate Mean 75%     50%    25%\n')
     for i in range(15):
-        if len(fu_percent[i])==0:
-            fu_percent[i].append(0)
-        fp.write(str(i+1)+' '+str(round(shader_total_rate[i]*100,2))+'%'+'   '+str(round(np.mean(fu_percent[i]),1))+'  '+str(np.percentile(fu_percent[i],75))+'  '+str(np.percentile(fu_percent[i],50))+'  '+str(np.percentile(fu_percent[i],25))+'\n')
+        if len(alu_percent[i])==0:
+            alu_percent[i].append(0)
+        fp.write(str(i+1)+' '+str(round(shader_total_rate[i]*100,2))+'%'+'   '+str(round(np.mean(alu_percent[i]),1))+'  '+str(np.percentile(alu_percent[i],75))+'  '+str(np.percentile(alu_percent[i],50))+'  '+str(np.percentile(alu_percent[i],25))+'\n')
     fp.close()
     #--------------------------------------------------------
-    # 找到前十項lsu busy time
-    ffp=open('./result/top10_FU.txt','w')
-    shader_max=np.zeros((15,10),dtype=np.int32)
-    count = np.zeros((15),dtype=np.int32)
-    for i in lsu_busy_time:
-        if(count[int(i[0])]<=9):
-            shader_max[int(i[0])][count[int(i[0])]]=i[3]
-            count[int(i[0])]=count[int(i[0])]+1
-        elif(count[int(i[0])]>9 and int(i[3])>np.amin(shader_max[int(i[0])])):
-            index=np.where(shader_max[int(i[0])]==np.amin(shader_max[int(i[0])]))
-            shader_max[int(i[0])][index[0][0]]=i[3]
-    for i in range(15):
-        shader_max=abs(np.sort(-shader_max))
-        ffp.write(str(shader_max[i])+'\n')
-    ffp.close()
+    # # 找到前十項lsu busy time
+    # ffp=open('./result/top10_FU.txt','w')
+    # shader_max=np.zeros((15,10),dtype=np.int32)
+    # count = np.zeros((15),dtype=np.int32)
+    # for i in lsu_busy_time:
+    #     if(count[int(i[0])]<=9):
+    #         shader_max[int(i[0])][count[int(i[0])]]=i[3]
+    #         count[int(i[0])]=count[int(i[0])]+1
+    #     elif(count[int(i[0])]>9 and int(i[3])>np.amin(shader_max[int(i[0])])):
+    #         index=np.where(shader_max[int(i[0])]==np.amin(shader_max[int(i[0])]))
+    #         shader_max[int(i[0])][index[0][0]]=i[3]
+    # for i in range(15):
+    #     shader_max=abs(np.sort(-shader_max))
+    #     ffp.write(str(shader_max[i])+'\n')
+    # ffp.close()
     #---------------------------------------------------------------------------------
 
+def ALU_time_transform(total_cycle):
+    f =open('alutime.txt','r')
+    alu_busy_time=[]
+    for i in f:
+        alu_busy_time.append(i.strip().split(','))
+    f.close()
+    #----------------------------------------------------------
+    # 輸出平均及各個百分位項的時間
+    fp=open('./result/total_rate_alu.txt','w')
+    alu_percent=[]
+    for i in range(15):
+        alu_percent.append([])
+    shader_total_rate=np.zeros((15),dtype=np.float32)
+    for i in alu_busy_time:
+        shader_total_rate[int(i[0])]=int(i[4])/total_cycle
+        alu_percent[int(i[0])].append(int(i[3]))
+    fp.write('sid  busy_rate Mean 75%     50%    25%\n')
+    for i in range(15):
+        if len(alu_percent[i])==0:
+            alu_percent[i].append(0)
+        fp.write(str(i+1)+' '+str(round(shader_total_rate[i]*100,2))+'%'+'   '+str(round(np.mean(alu_percent[i]),1))+'  '+str(np.percentile(alu_percent[i],75))+'  '+str(np.percentile(alu_percent[i],50))+'  '+str(np.percentile(alu_percent[i],25))+'\n')
+    fp.close()
+
 def long_latency_calculate():
+    df=pd.read_csv('latencyL1L2.csv',names=["Sid","Wid","PC","div","issue","write","latency"])
+    df=df.sort_values(by='issue',ascending=True)
+    df.to_csv("./latencyL1L2.txt")
+    for i in range(33):
+        div=df.loc[df["div"]==i+1]
+        if div.empty==False:
+            (div.describe().round(0)).to_csv("./result/latency.csv", mode='a', index=True, header=True)
+        
     latencyl1l2=open("latencyL1L2.txt","r")
-    L1cache_list=[]
-    L2cache_list=[]
-    l1latency=[]
-    l2latency=[]
-    pc_value=[]
     latency=open("./result/latency.txt","w")
+    tmp=[]
+    flag=0
+    count=0
     for i in latencyl1l2:
         j=i.strip().split(',')
-        if i[0]=="1":
-            L1cache_list.append(j[1])
-            l1latency.append(int(j[4]))
-        elif i[0]=="2":
-            L2cache_list.append(j[1])
-            l2latency.append(int(j[4]))
-        if j[1] not in pc_value:
-                pc_value.append(j[1])
-    latency.write("L1_cache_access: "+str(len(L1cache_list))+"\nL2_cache_access: "+str(len(L2cache_list)))# l1 l2 total cache access
-    latency.write("\nL1_total_pc:\n")
-    for i in pc_value:
-        latency.write(str(i)+":"+str(L1cache_list.count(i))+"  ")
-    latency.write("\n")
-    latency.write("L2_total_pc:\n")
-    for i in pc_value:
-        latency.write(str(i)+":"+str(L2cache_list.count(i))+"  ")
-    latency.write("\n")
-    latency.write("l2_latency_mean: "+str(round(np.mean(l2latency),2)))
-    latency.write("\nl2_latency_percentile:\n")
-    for i in range(10,110,10):
-        latency.write(str(i)+":"+str(round(np.percentile(l2latency,i),0))+"  ")
+        if(j[1])!="Sid" and count==0:
+            count=int(j[4])-1
+            flag=1
+        elif count!=0:
+            count=count-1
+        if flag==1 and count==0:
+            j.pop(0)
+            # tmp.append(j)
+            latency.write(str(j)+'\n')
+            flag=0
 
-        
