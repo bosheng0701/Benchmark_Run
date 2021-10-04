@@ -48,7 +48,7 @@
  cd /root/benchmark_run/rodinia/3.1/cuda/srad 
  SECONDS=0
  echo  "srad_v2 run" |tee -a time.txt
- /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/srad_v2-rodinia-3.1 128 128 0 31 0 31 0.5 2 >srad_v2_baseline_2048.txt 
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/srad_v2-rodinia-3.1 2048 2048 0 127 0 127 0.5 2 >srad_v2_baseline_2048.txt 
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
