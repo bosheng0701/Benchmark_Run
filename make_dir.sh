@@ -14,12 +14,12 @@ cd wp
 mkdir data
 cd ..
 cd ..
-#
+# 
 
 # pannotia
 cd pannotia
 cd ..
-#
+# 
 
 # parboil
 cd parboil

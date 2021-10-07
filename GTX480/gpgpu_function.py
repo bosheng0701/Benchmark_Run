@@ -52,20 +52,20 @@ def function_cta_retire_time_transform():# 統計cta retire的平均時間以及
 
     #----------------------------------------------
     # 找到前十項cta retire time
-    ffp=open('./result/top10_cta_retire.txt','w')
-    shader_max=np.zeros((15,10),dtype=np.int32)
-    count = np.zeros((15),dtype=np.int32)
-    for i in cta_retire_time:
-        if(count[int(i[0])]<=9):
-            shader_max[int(i[0])][count[int(i[0])]]=i[3]
-            count[int(i[0])]=count[int(i[0])]+1
-        elif(count[int(i[0])]>9 and int(i[3])>np.amin(shader_max[int(i[0])])):
-            index=np.where(shader_max[int(i[0])]==np.amin(shader_max[int(i[0])]))
-            shader_max[int(i[0])][index[0][0]]=i[3]
-    for i in range(15):
-        shader_max=abs(np.sort(-shader_max))
-        ffp.write(str(shader_max[i])+'\n')
-    ffp.close()
+    # ffp=open('./result/top10_cta_retire.txt','w')
+    # shader_max=np.zeros((15,10),dtype=np.int32)
+    # count = np.zeros((15),dtype=np.int32)
+    # for i in cta_retire_time:
+    #     if(count[int(i[0])]<=9):
+    #         shader_max[int(i[0])][count[int(i[0])]]=i[3]
+    #         count[int(i[0])]=count[int(i[0])]+1
+    #     elif(count[int(i[0])]>9 and int(i[3])>np.amin(shader_max[int(i[0])])):
+    #         index=np.where(shader_max[int(i[0])]==np.amin(shader_max[int(i[0])]))
+    #         shader_max[int(i[0])][index[0][0]]=i[3]
+    # for i in range(15):
+    #     shader_max=abs(np.sort(-shader_max))
+    #     ffp.write(str(shader_max[i])+'\n')
+    # ffp.close()
     #---------------------------------------------------
 
 def function_unit_time_transform(total_cycle): #統計load store unit busy time 
