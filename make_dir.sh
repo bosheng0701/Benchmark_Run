@@ -18,6 +18,7 @@ cd ..
 
 # pannotia
 cd pannotia
+mkdir color_max
 cd ..
 # 
 

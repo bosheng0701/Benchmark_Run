@@ -24,6 +24,16 @@
  
  ###------------------------------ pannotia begin ---------------------------------
 
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/pannotia/color_max
+ SECONDS=0
+ echo  "color_max run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/color_max /root/gpgpu-sim_simulations/benchmarks/data_dirs/pannotia/color_max/data/G3_circuit.graph 1 >color_max.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
  ###------------------------------ pannotia End ------------------------------------------------------
 
  ###------------------------------ parboil begin ---------------------------------

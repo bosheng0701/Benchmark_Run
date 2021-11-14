@@ -8,6 +8,9 @@
  cd /root/benchmark_run/ispass/wp/data
  cp -a /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/ispass-2009/ispass-2009-WP/data/* ./
 
+ # pannotia
+ cd /root/benchmark_run/pannotia/color_max
+ cp -a /root/benchmark_run/$1/* ./
  # parboil
  cd /root/benchmark_run/parboil/parboil-spmv
  cp -a /root/benchmark_run/$1/* ./
