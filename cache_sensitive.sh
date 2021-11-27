@@ -31,15 +31,15 @@
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
- cd /root/gpgpu-sim_distribution
- source setup_environment 
- make
- cd /root/benchmark_run/sdk/dct
- SECONDS=0
- echo  "dct run" |tee -a time.txt
- /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/dct8x8 >dct.txt
- duration=$SECONDS
- echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+#  cd /root/gpgpu-sim_distribution
+#  source setup_environment 
+#  make
+#  cd /root/benchmark_run/sdk/dct
+#  SECONDS=0
+#  echo  "dct run" |tee -a time.txt
+#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/dct8x8 >dct.txt
+#  duration=$SECONDS
+#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
 
  cd /root/gpgpu-sim_distribution
@@ -53,12 +53,35 @@
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
 
+#  cd /root/gpgpu-sim_distribution
+#  source setup_environment 
+#  make
+#  cd /root/benchmark_run/rodinia/3.1/cuda/kmeans
+#  SECONDS=0
+#  echo  "kmeans run" |tee -a time.txt
+#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/kmeans-rodinia-3.1 -o -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/kmeans-rodinia-3.1/data/128k.txt >kmeans_128k.txt
+#  duration=$SECONDS
+#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+ 
  cd /root/gpgpu-sim_distribution
  source setup_environment 
  make
- cd /root/benchmark_run/rodinia/3.1/cuda/kmeans
+ cd /root/benchmark_run/rodinia/3.1/cuda/gaussian
  SECONDS=0
- echo  "kmeans run" |tee -a time.txt
- /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/kmeans-rodinia-3.1 -o -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/kmeans-rodinia-3.1/data/128k.txt >kmeans_128k.txt
+ echo  "gaussian run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/gaussian-rodinia-3.1 -f /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/gaussian-rodinia-3.1/data/matrix4.txt > gaussian_baseline_matrix4.txt
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/rodinia/3.1/cuda/lavaMD
+ SECONDS=0
+ echo  "lavaMD run" |tee -a time.txt
+ timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/lavaMD-rodinia-3.1 -boxes1d 10 > lavaMD_baseline.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+ 
