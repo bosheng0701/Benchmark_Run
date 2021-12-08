@@ -103,3 +103,13 @@
  /root/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/mergeSort >MGT.txt
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/sdk/dct
+ SECONDS=0
+ echo  "dct run" |tee -a time.txt
+ /root/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/dct8x8 >dct.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
