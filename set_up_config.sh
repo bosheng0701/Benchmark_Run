@@ -101,3 +101,6 @@
  mkdir data
  cd data 
  cp -a /root/gpgpu-sim_simulations/benchmarks/src/cuda/sdk/4.2/dct8x8/doc/* ./
+ 
+ cd /root/benchmark_run/sdk/MGT
+ cp -a /root/benchmark_run/$1/* ./

@@ -73,5 +73,6 @@ cd benchmark_run
 # sdk 
 cd sdk 
 mkdir dct
+mkdir MGT
 cd ..
 #
