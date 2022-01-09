@@ -42,15 +42,15 @@
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
 
- cd /root/gpgpu-sim_distribution
- source setup_environment 
- make
- cd /root/benchmark_run/rodinia/3.1/cuda/srad 
- SECONDS=0
- echo  "srad_v2 run" |tee -a time.txt
- /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/srad_v2-rodinia-3.1 2048 2048 0 127 0 127 0.5 2 >srad_v2_baseline_2048.txt 
- duration=$SECONDS
- echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+#  cd /root/gpgpu-sim_distribution
+#  source setup_environment 
+#  make
+#  cd /root/benchmark_run/rodinia/3.1/cuda/srad 
+#  SECONDS=0
+#  echo  "srad_v2 run" |tee -a time.txt
+#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/srad_v2-rodinia-3.1 2048 2048 0 127 0 127 0.5 2 >srad_v2_baseline_2048.txt 
+#  duration=$SECONDS
+#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
 
 #  cd /root/gpgpu-sim_distribution
@@ -85,6 +85,7 @@
 #  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
   cd /root/gpgpu-sim_distribution
+<<<<<<< HEAD
  source setup_environment 
  make
  cd /root/benchmark_run/pannotia/color_max
@@ -101,5 +102,33 @@
  SECONDS=0
  echo  "MGT run" |tee -a time.txt
  /root/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/mergeSort >MGT.txt
+=======
+ source setup_environment 
+ make
+ cd /root/benchmark_run/pannotia/color_max
+ SECONDS=0
+ echo  "color_max run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/color_max /root/gpgpu-sim_simulations/benchmarks/data_dirs/pannotia/color_max/data/ecology1.graph 1 >color_max.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+  cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/sdk/MGT
+ SECONDS=0
+ echo  "MGT run" |tee -a time.txt
+ /root/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/mergeSort >MGT.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+
+cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/sdk/dct
+ SECONDS=0
+ echo  "dct run" |tee -a time.txt
+ /root/NVIDIA_GPU_Computing_SDK/C/bin/linux/release/dct8x8 >dct.txt
+>>>>>>> de73b915eccd6bfaa19f54ba71d577cdfdfc0a93
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
