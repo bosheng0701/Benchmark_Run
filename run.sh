@@ -126,7 +126,7 @@
  cd /root/benchmark_run/rodinia/3.1/cuda/bfs
  SECONDS=0
  echo  "bfs run" |tee -a time.txt
- timeout 2h /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/bfs-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/bfs-rodinia-3.1/data/graph4096.txt >bfs_baseline.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/bfs-rodinia-3.1 /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/bfs-rodinia-3.1/data/graph1MW_6.txt > bfs_graph1MW_6.txt
  duration=$SECONDS
  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 
