@@ -26,6 +26,12 @@ cd ..
 cd parboil
 mkdir parboil-spmv
 mkdir lbm
+mkdir cutcp
+mkdir mri-grid
+mkdir mri-q
+mkdir sad
+mkdir sgemm
+mkdir stencil
 cd ..
 #
 
@@ -34,6 +40,18 @@ cd polybench
 mkdir 2DC
 mkdir atax
 mkdir mvt
+mkdir 2MM
+mkdir 3DC
+mkdir 3MM
+mkdir bicg
+mkdir corr
+mkdir cova
+mkdir fdtd2d
+mkdir gemm
+mkdir gesu
+mkdir gram
+mkdir syr2k
+mkdir syrk
 cd ..
 #
 

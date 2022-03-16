@@ -14,8 +14,26 @@
  # parboil
  cd /root/benchmark_run/parboil/parboil-spmv
  cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/parboil/cutcp
+ cp -a /root/benchmark_run/$1/* ./
  
  cd /root/benchmark_run/parboil/lbm
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/parboil/mri-grid
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/parboil/mri-q
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/parboil/sad
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/parboil/sgemm
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/parboil/stencil
  cp -a /root/benchmark_run/$1/* ./
 
  # polybench
@@ -28,6 +46,41 @@
  cd /root/benchmark_run/polybench/mvt
  cp -a /root/benchmark_run/$1/* ./
 
+ cd /root/benchmark_run/polybench/2MM
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/3DC
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/3MM
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/bicg
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/corr
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/cova
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/fdtd2d
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/gemm
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/gesu
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/gram
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/syr2k
+ cp -a /root/benchmark_run/$1/* ./
+
+ cd /root/benchmark_run/polybench/syrk
+ cp -a /root/benchmark_run/$1/* ./
  # rodinia 3.1
  cd /root/benchmark_run/rodinia/3.1/cuda/b+tree
  cp -a /root/benchmark_run/$1/* ./
