@@ -22,16 +22,16 @@
 #  rm _cuobjdump*
 
  
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/ispass/bfs
-#  SECONDS=0
-#  echo  "BFS run" |tee -a time.txt
-#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/ispass-2009-BFS /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/bfs-rodinia-3.1/data/graph65536.txt >BFS65536.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
-#  rm _cuobjdump*
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/ispass/bfs
+ SECONDS=0
+ echo  "BFS run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/ispass-2009-BFS /root/gpgpu-sim_simulations/benchmarks/data_dirs/cuda/rodinia/3.1/bfs-rodinia-3.1/data/graph65536.txt >BFS65536.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ rm _cuobjdump*
 
 
  cd /root/gpgpu-sim_distribution
@@ -136,37 +136,37 @@
 #  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
 #  rm _cuobjdump*
 
-#  cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/polybench/3DC
-#  SECONDS=0
-#  echo  "3DC run" |tee -a time.txt
-#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/polybench-3DConvolution > 3DC.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
-#  rm _cuobjdump*
+ cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/polybench/3DC
+ SECONDS=0
+ echo  "3DC run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/polybench-3DConvolution > 3DC.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ rm _cuobjdump*
 
-# cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/polybench/gemm
-#  SECONDS=0
-#  echo  "gemm run" |tee -a time.txt
-#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/polybench-gemm > gemm.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
-#  rm _cuobjdump*
+cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/polybench/gemm
+ SECONDS=0
+ echo  "gemm run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/polybench-gemm > gemm.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ rm _cuobjdump*
 
-#   cd /root/gpgpu-sim_distribution
-#  source setup_environment 
-#  make
-#  cd /root/benchmark_run/parboil/mri-q
-#  SECONDS=0
-#  echo  "mri-q run" |tee -a time.txt
-#  /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/parboil-mri-q -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/parboil/parboil-mri-q/data/small/input/32_32_32_dataset.bin >mri-q.txt
-#  duration=$SECONDS
-#  echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
-#  rm _cuobjdump*
+  cd /root/gpgpu-sim_distribution
+ source setup_environment 
+ make
+ cd /root/benchmark_run/parboil/mri-q
+ SECONDS=0
+ echo  "mri-q run" |tee -a time.txt
+ /root/gpgpu-sim_simulations/benchmarks/bin/4.2/release/parboil-mri-q -i /root/gpgpu-sim_simulations/benchmarks/data_dirs/parboil/parboil-mri-q/data/small/input/32_32_32_dataset.bin >mri-q.txt
+ duration=$SECONDS
+ echo "$(($duration / 60)) minutes and $(($duration % 60)) seconds elapsed."|tee -a time.txt
+ rm _cuobjdump*
 
  
