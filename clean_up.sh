@@ -5,3 +5,4 @@
  rm -r polybench
  rm -r rodinia
  rm -r sdk
+ rm -r /root/.vscode-server/data/User/History
